@@ -1,5 +1,6 @@
 var request = require('request');
 var qs = require('querystring');
+var fs = require('fs');
 var Promise = require('bluebird');
 
 
