@@ -54,7 +54,11 @@ TestRail.prototype._callAPI = function (method, url, queryVariables, body, callb
   };
 
   if(body != null) {
-    requestArguments.body = body;
+    if (body.attachment) {
+      requestArguments.formData = body;
+    } else {
+      requestArguments.body = body;
+    }
   }
 
   if (typeof callback === 'function') {
@@ -471,6 +475,12 @@ TestRail.prototype.getUserByEmail = function (email, callback) {
 
 TestRail.prototype.getUsers = function (callback) {
   return this.apiGet('get_users', callback);
+};
+
+// ----- Attachments -----
+
+TestRail.prototype.addAttachmentToResult = function (resultId, filePath) {
+  return this.apiPost('add_attachment_to_result/' + resultId, { attachment: fs.createReadStream(filePath) });
 };
 
 // ----------
