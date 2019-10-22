@@ -84,7 +84,7 @@ declare class TestrailApiClient {
     getUserByEmail(email: string, callback?: t.Callback<t.ITestrailUser>): t.PromiseResponse<t.ITestrailUser>;
     getUsers(callback?: t.Callback<t.ITestrailUser[]>): t.PromiseResponse<t.ITestrailUser[]>;
 
-    addAttachmentToResult(resultId: number, filePath: string): t.PromiseResponse;
+    addAttachmentToResult(resultId: number, filePath: string): t.PromiseResponse<any>;
 }
 
 declare namespace TestrailApiClient {
